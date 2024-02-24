@@ -10,12 +10,12 @@ console.log("check")
 window.onload = function() {
     const x = canvas.width;
     const y = canvas.height;
-    const N = 100;
+    const N = 50;
     const size = 5;
     const w1 = 1;
     const w2 = 1;
     const w3 = 1;
-    const dt = 0.01;
+    const dt = 0.005;
     const c = 0;//閾値
     const r = size;//判定半径
     let pos_X = Array(N);
@@ -54,30 +54,32 @@ window.onload = function() {
         //↑初期化
         function translate() {
             step ++;
-            if(step%1000 == 0){
-                for (let i = 0; i < N; i++){
-                    vel_X[i] = -vel_X[i];
-                    vel_Y[i] = -vel_Y[i];
-                    vel_X1[i] = -vel_X1[i];
-                    vel_Y1[i] = -vel_Y1[i];
-                }
-            }
-            if(step%1000 == 333){
-                for (let i = 0; i < N; i++){
-                    vel_X[i] = -vel_Y[i];
-                    vel_Y[i] = vel_X[i];
-                    vel_X1[i] = -vel_Y1[i];
-                    vel_Y1[i] = vel_X[i];
-                }
-            }
-            if(step%1000 == 667){
-                for (let i = 0; i < N; i++){
-                    vel_X[i] = vel_Y[i];
-                    vel_Y[i] = -vel_X[i];
-                    vel_X1[i] = vel_Y1[i];
-                    vel_Y1[i] = -vel_X1[i];
-                }
-            }
+            //以下外乱
+            // if(step%1000 == 0){
+            //     for (let i = 0; i < N; i++){
+            //         vel_X[i] = -vel_X[i];
+            //         vel_Y[i] = -vel_Y[i];
+            //         vel_X1[i] = -vel_X1[i];
+            //         vel_Y1[i] = -vel_Y1[i];
+            //     }
+            // }
+            // if(step%1000 == 333){
+            //     for (let i = 0; i < N; i++){
+            //         vel_X[i] = -vel_Y[i];
+            //         vel_Y[i] = vel_X[i];
+            //         vel_X1[i] = -vel_Y1[i];
+            //         vel_Y1[i] = vel_X[i];
+            //     }
+            // }
+            // if(step%1000 == 667){
+            //     for (let i = 0; i < N; i++){
+            //         vel_X[i] = vel_Y[i];
+            //         vel_Y[i] = -vel_X[i];
+            //         vel_X1[i] = vel_Y1[i];
+            //         vel_Y1[i] = -vel_X1[i];
+            //     }
+            // }   
+            //外乱終わり
             for (let i = 0; i < N; i++){
                 if(pos_X1[i] <= 0 && vel_X1[i] <= 0){
                     pos_X1[i] += x;
@@ -107,11 +109,11 @@ window.onload = function() {
             }
             ctx.clearRect(0,0,canvas.width, canvas.height);//リセット
             ctx.beginPath();
-            // ctx.fillStyle = "black";
-            // ctx.font = "20px sans-serif";
-            // ctx.fillText("step:" + step, 0, 40);
             // ctx.strokeRect(0,0,x,y);//輪郭線の四角形
             ctx.drawImage(img, 0, 0, x, y);
+            ctx.fillStyle = "black";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("Hellow Aquarium!!", 0, 40);
             for (let i = 0; i < N; i++){
                 ctx.strokeRect(pos_X1[i],pos_Y1[i],size,size);//各座標に描画
             }
