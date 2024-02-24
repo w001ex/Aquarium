@@ -1,11 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");//2次元描画
 var img = new Image();
-img.onload = function() {
-        ctx.drawImage(img, 0, 0, 3200, 3200);
-    };
 img.src = 'Src/sea.jpg'; 
-console.log("check")
+console.log("check");
 
 window.onload = function() {
     const x = canvas.width;
