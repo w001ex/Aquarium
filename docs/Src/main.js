@@ -10,12 +10,13 @@ console.log("check")
 window.onload = function() {
     const x = canvas.width;
     const y = canvas.height;
-    const N = 1000;
+    const N = 100;
     const size = 5;
     const w1 = 1;
     const w2 = 1;
     const w3 = 1;
     const dt = 0.01;
+    const c = 0;//閾値
     const r = size;//判定半径
     let pos_X = Array(N);
     let pos_Y = Array(N);
@@ -95,7 +96,7 @@ window.onload = function() {
                 vel1 = w1*cohesion(i)[1] + w2*separation(i)[1] + w3*alignment(i)[1];
                 let rand = 0;
                 rand = 2*Math.random() -1;
-                if(rand > 0.5){
+                if(rand > c){
                     vel0 = 1000*(Math.random()-0.5);
                     vel1 = 1000*(Math.random()-0.5);
                 }
@@ -110,6 +111,7 @@ window.onload = function() {
             // ctx.font = "20px sans-serif";
             // ctx.fillText("step:" + step, 0, 40);
             // ctx.strokeRect(0,0,x,y);//輪郭線の四角形
+            ctx.drawImage(img, 0, 0, 3200, 3200);
             for (let i = 0; i < N; i++){
                 ctx.strokeRect(pos_X1[i],pos_Y1[i],size,size);//各座標に描画
             }
@@ -121,6 +123,7 @@ window.onload = function() {
                 }
             requestAnimationFrame(translate);//繰り返し呼び出す
           }
+          
         translate();
           
         function cohesion(j){
