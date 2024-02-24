@@ -111,7 +111,7 @@ window.onload = function() {
             // ctx.font = "20px sans-serif";
             // ctx.fillText("step:" + step, 0, 40);
             // ctx.strokeRect(0,0,x,y);//輪郭線の四角形
-            ctx.drawImage(img, 0, 0, 3200, 3200);
+            ctx.drawImage(img, 0, 0, x, y);
             for (let i = 0; i < N; i++){
                 ctx.strokeRect(pos_X1[i],pos_Y1[i],size,size);//各座標に描画
             }
