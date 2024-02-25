@@ -80,7 +80,6 @@ window.onload = function() {
             ctx.drawImage(img, 0, 0, x, y);
             ctx.fillStyle = "black";
             ctx.font = "20px sans-serif";
-            ctx.fillText("Hello Aquarium!!", 0, 40);
             for (let i = 0; i < N; i++){
                 ctx.save();
                 ctx.translate(pos_X1[i], pos_Y1[i]);
@@ -89,6 +88,8 @@ window.onload = function() {
                 ctx.drawImage(img2,-size/2,-size/2,size,size);
                 ctx.restore();
             }
+            ctx.fillText("Hello Aquarium!!", 0, 40);
+            ctx.fillText("illustration:Reika Sano", x - 250, y - 40);
             for (let i = 0; i < N; i++){
                 pos_X[i] = pos_X1[i];
                 pos_Y[i] = pos_Y1[i];
