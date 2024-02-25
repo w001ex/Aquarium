@@ -4,7 +4,6 @@ var img = new Image();
 img.src = 'Src/sea.jpg'; 
 var img2 = new Image();
 img2.src = 'Src/fish.png'; 
-console.log("check");
 
 window.onload = function() {
     const x = canvas.width;
