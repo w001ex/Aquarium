@@ -81,7 +81,7 @@ window.onload = function() {
             ctx.drawImage(img, 0, 0, x, y);
             ctx.fillStyle = "black";
             ctx.font = "20px sans-serif";
-            ctx.fillText("Hellow Aquarium!!", 0, 40);
+            ctx.fillText("Hello Aquarium!!", 0, 40);
             for (let i = 0; i < N; i++){
                 ctx.save();
                 ctx.translate(pos_X1[i], pos_Y1[i]);
