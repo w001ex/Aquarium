@@ -11,14 +11,14 @@ img3.src = 'Src/fish2.png';
 window.onload = function() {
     const x = canvas.width;
     const y = canvas.height;
-    const N = 50;
-    const size = 250;
+    const N = 75;
+    const size = 50;
     const w1 = 0.1;
     const w2 = 0.1;
     const w3 = 0.1;
     const dt = 0.0075;
     const c = 0;//閾値() c%がランダムに動く
-    const r = size;//判定半径
+    const r = 0.001*size;//判定半径
     let pos_X = Array(N);
     let pos_Y = Array(N);
     let vel_X = Array(N);
@@ -59,17 +59,17 @@ window.onload = function() {
         function translate() {
             step ++;
             for (let i = 0; i < N; i++){
-                if(pos_X1[i] + size<= 0 && vel_X1[i] <= 0){
-                    pos_X1[i] += x + 2*size;
+                if(pos_X1[i] + 2*size<= 0 && vel_X1[i] <= 0){
+                    pos_X1[i] += x + 4*size;
                 }
                 if(pos_X1[i] >= x + size && vel_X1[i] >= 0){
-                    pos_X1[i] -= x + 2*size;
+                    pos_X1[i] -= x + 4*size;
                 }
-                if(pos_Y1[i] + size <= 0 && vel_Y1[i] <= 0){
-                    pos_Y1[i] += y + 2*size;
+                if(pos_Y1[i] + 2*size <= 0 && vel_Y1[i] <= 0){
+                    pos_Y1[i] += y + 4*size;
                 }
                 if(pos_Y1[i]  >= y + size && vel_Y1[i] >= 0){
-                    pos_Y1[i] -= y + 2*size;
+                    pos_Y1[i] -= y + 4*size;
                 }
 
                 vel0 = w1*cohesion(i)[0] + w2*separation(i)[0] + w3*alignment(i)[0]; 
@@ -93,11 +93,10 @@ window.onload = function() {
                 ctx.save();
                 ctx.translate(pos_X1[i], pos_Y1[i]);
                 ctx.rotate(theta[i] - 0.5*Math.PI);
-                console.log(theta[i]);
                 if(tag[i] == 0){
-                    ctx.drawImage(img2,-size/2,-size/2,0.5*size,0.5*size);
+                    ctx.drawImage(img2,-size/2,-size/2, 2.5*size, 2.5*size);
                 }else{
-                    ctx.drawImage(img3,-size/2,-size/2,0.5*size,0.5*size);
+                    ctx.drawImage(img3,-size/2,-size/2, 2.5*size, 2.5*size);
                 }
                 ctx.restore();
             }
